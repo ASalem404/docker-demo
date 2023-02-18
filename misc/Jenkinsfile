@@ -12,7 +12,7 @@ node {
      }
    }
    stage('docker build/push') {
-     docker.withRegistry('https://index.docker.io/v2/', 'dockerhub') {
+     docker.withRegistry([ credentialsId: "dockerhub", url: "" ]) {
        def app = docker.build("ahmedas144/docker-nodejs-learn-pipeline:${commit_id}", '.').push()
      }
    }
